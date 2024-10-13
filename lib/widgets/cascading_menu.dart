@@ -7,6 +7,10 @@ class cascading_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MenuAnchor(
+      style: MenuStyle(
+        backgroundColor: WidgetStatePropertyAll<Color>(Color(0xff697565)),
+
+      ),
       menuChildren: [
         MenuItemButton(
           onPressed: () {

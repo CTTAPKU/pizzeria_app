@@ -6,7 +6,7 @@ class history_card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
+      color: Color(0xff697565),
       child: InkWell(
         onTap: () {
 

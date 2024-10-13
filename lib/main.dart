@@ -7,7 +7,7 @@ void main() {
   runApp(
     MaterialApp(
       home: nav_bar(),
-      theme: theme_data.getAppTheme()
+      theme: theme_data.getAppTheme(),
     ),
   );
 }

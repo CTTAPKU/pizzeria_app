@@ -10,7 +10,7 @@ class pizza_card extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       clipBehavior: Clip.antiAlias,
-      color: Colors.white,
+      color: Color(0xff697565),
       child: ExpansionWidget.autoSaveState(
         initiallyExpanded: false,
         titleBuilder:
@@ -25,7 +25,7 @@ class pizza_card extends StatelessWidget {
                     Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Colors.white, Colors.white12],
+                            colors: [Color(0xff1E201E), Colors.transparent],
                             begin: Alignment.bottomLeft,
                             end: Alignment.topCenter),
                       ),
@@ -44,7 +44,6 @@ class pizza_card extends StatelessWidget {
                         "Margarita",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
                             fontSize: 24),
                       ),
                     )
@@ -58,6 +57,9 @@ class pizza_card extends StatelessWidget {
           alignment: Alignment.bottomRight,
           padding: const EdgeInsets.only(right: 20, bottom: 5),
           child: OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(color: Color(0xffECDFCC))
+            ),
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => order()));
@@ -66,7 +68,6 @@ class pizza_card extends StatelessWidget {
               "Замовити",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
                   fontSize: 20),
             ),
           ),
