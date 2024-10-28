@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria_aic/screen/prifile.dart';
+import 'package:pizzeria_aic/screen/profile.dart';
 import '../screen/history.dart';
 import '../screen/home.dart';
 

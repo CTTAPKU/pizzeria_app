@@ -19,7 +19,12 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         actions: [cascading_menu()],
       ),
-      body: pizza_card(),
+      body: ListView.builder(
+        itemCount: 100,
+          itemBuilder: (context, index) {
+            return pizza_card();
+          },
+      ),
     );
   }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pizzeria_aic/screen/login/signin.dart';
+
 import 'package:pizzeria_aic/theme.dart';
-import 'package:pizzeria_aic/widgets/nav_bar.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
-      home: nav_bar(),
+      home: signin(),
       theme: theme_data.getAppTheme(),
     ),
   );
