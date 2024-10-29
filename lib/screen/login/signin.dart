@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
 import 'package:pizzeria_aic/screen/login/signup.dart';
-import 'package:pizzeria_aic/widgets/nav_bar.dart';
 
 class signin extends StatefulWidget {
   const signin({super.key});

@@ -18,11 +18,7 @@ class AuthService {
         MaterialPageRoute(builder: (context) => signin()),
       );
     } on FirebaseAuthException catch (e) {
-      String message = "";
-      if (e.code == "week-password")
-        message = "Закороткий пароль";
-      else if (e.code == "email-already-in-use")
-        message = "Акаунт з цією поштою вже існує";
+
     } catch (e) {}
   }
 
@@ -37,11 +33,7 @@ class AuthService {
       await Future.delayed(const Duration(seconds: 1));
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)  => nav_bar()));
     } on FirebaseAuthException catch (e) {
-      String message = "";
-      if (e.code == "week-password")
-        message = "Закороткий пароль";
-      else if (e.code == "email-already-in-use")
-        message = "Акаунт з цією поштою вже існує";
+
     } catch (e) {}
   }
 }
