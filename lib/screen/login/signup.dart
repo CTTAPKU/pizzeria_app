@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria_aic/screen/login/signin.dart';
+import 'package:pizzeria_aic/Services/auth_service.dart';
 
-class signup extends StatelessWidget {
+class signup extends StatefulWidget {
   const signup({super.key});
+
+  @override
+  State<signup> createState() => _signupState();
+}
+
+class _signupState extends State<signup> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +62,9 @@ class signup extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 8,),
+                  SizedBox(
+                    width: 8,
+                  ),
                   Expanded(
                     child: TextField(
                       expands: false,
@@ -74,6 +91,7 @@ class signup extends StatelessWidget {
               ),
               SizedBox(height: 8),
               TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: "Пошта",
                   labelStyle: const TextStyle(color: Color(0xffECDFCC)),
@@ -114,6 +132,7 @@ class signup extends StatelessWidget {
               ),
               SizedBox(height: 8),
               TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   labelText: "Пароль",
                   labelStyle: const TextStyle(color: Color(0xffECDFCC)),
@@ -138,10 +157,11 @@ class signup extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => signin()),
+                  onPressed: () async {
+                    await AuthService().signUP(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      context: context,
                     );
                   },
                   child: const Text("Створити Акаунт"),

@@ -12,11 +12,7 @@ class nav_bar extends StatefulWidget {
 
 class _nav_barState extends State<nav_bar> {
   int currentPageIndex = 0;
-  final screens = const [
-    Home(),
-    history(),
-    profile()
-  ];
+  final screens = const [Home(), history(), profile()];
   NavigationDestinationLabelBehavior labelBehavior =
       NavigationDestinationLabelBehavior.onlyShowSelected;
 
@@ -28,15 +24,19 @@ class _nav_barState extends State<nav_bar> {
         selectedIndex: currentPageIndex,
         onDestinationSelected: (int index) {
           setState(
-                () {
+            () {
               currentPageIndex = index;
             },
           );
         },
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.list), label: "Меню",),
+          NavigationDestination(
+            icon: Icon(Icons.list),
+            label: "Меню",
+          ),
           NavigationDestination(icon: Icon(Icons.bookmark), label: "Історія"),
-          NavigationDestination(icon: Icon(Icons.account_circle_outlined), label: "Профіль")
+          NavigationDestination(
+              icon: Icon(Icons.account_circle_outlined), label: "Профіль")
         ],
       ),
       body: screens[currentPageIndex],

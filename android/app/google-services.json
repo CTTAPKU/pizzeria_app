@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "318260814572",
+    "project_id": "pizzeria-bd5e8",
+    "storage_bucket": "pizzeria-bd5e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318260814572:android:3bbe2ed11b56b851727bc9",
+        "android_client_info": {
+          "package_name": "com.example.pizzeria_aic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7gDhCsD1dIg4nVbUhGgKA35BCtem4R50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

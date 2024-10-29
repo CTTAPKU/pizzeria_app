@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:pizzeria_aic/Services/auth_service.dart';
 import 'package:pizzeria_aic/screen/login/signup.dart';
 import 'package:pizzeria_aic/widgets/nav_bar.dart';
 
-class signin extends StatelessWidget {
+class signin extends StatefulWidget {
   const signin({super.key});
+
+  @override
+  State<signin> createState() => _signinState();
+}
+
+class _signinState extends State<signin> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +65,11 @@ class signin extends StatelessWidget {
                           ),
                         ),
                       ),
+                      controller: emailController,
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Пароль",
@@ -80,10 +99,10 @@ class signin extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => nav_bar()),
-                    );
+                    AuthService().signIN(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context: context);
                   },
                   child: const Text("Увійти"),
                 ),
@@ -95,7 +114,7 @@ class signin extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => signup()),
                     );
