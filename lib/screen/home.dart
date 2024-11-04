@@ -20,9 +20,12 @@ class _HomeState extends State<Home> {
         actions: [cascading_menu()],
       ),
       body: ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical:8),
         itemCount: 100,
           itemBuilder: (context, index) {
-            return pizza_card();
+            return Container(
+              margin:EdgeInsets.symmetric(vertical:4),
+                child: pizza_card());
           },
       ),
     );

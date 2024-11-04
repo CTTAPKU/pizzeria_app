@@ -11,11 +11,17 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -42,6 +48,7 @@ class _signupState extends State<signup> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: firstNameController,
                       expands: false,
                       decoration: InputDecoration(
                         labelText: "Ім'я",
@@ -67,6 +74,7 @@ class _signupState extends State<signup> {
                   ),
                   Expanded(
                     child: TextField(
+                      controller: lastNameController,
                       expands: false,
                       decoration: InputDecoration(
                         labelText: "Прізвище",
@@ -112,7 +120,10 @@ class _signupState extends State<signup> {
               ),
               SizedBox(height: 8),
               TextField(
+                controller: phoneNumberController,
                 decoration: InputDecoration(
+                  prefixText: "+38 ",
+                  prefixStyle: TextStyle(color: Color(0xffECDFCC)),
                   labelText: "Телефон",
                   labelStyle: const TextStyle(color: Color(0xffECDFCC)),
                   focusedBorder: OutlineInputBorder(
@@ -163,6 +174,12 @@ class _signupState extends State<signup> {
                       password: passwordController.text,
                       context: context,
                     );
+
+                    await AuthService().userSetup(
+                        firstName: firstNameController.text,
+                        lastName: lastNameController.text,
+                        phoneNumber: phoneNumberController.text,
+                        email: emailController.text);
                   },
                   child: const Text("Створити Акаунт"),
                 ),

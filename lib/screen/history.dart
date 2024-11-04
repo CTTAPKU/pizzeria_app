@@ -22,7 +22,9 @@ class _historyState extends State<history> {
         centerTitle: true,
         actions: [cascading_menu()],
       ),
-      body: history_card(),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical:8),
+          child: history_card()),
     );
   }
 }
