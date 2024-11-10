@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class cascading_menu extends StatelessWidget {
@@ -12,11 +13,17 @@ class cascading_menu extends StatelessWidget {
       ),
       menuChildren: [
         MenuItemButton(
-          onPressed: () {},
+          onPressed: () async {
+            final url = Uri.https('github.com', '/CTTAPKU/pizzeria_aic');
+            await launchUrl(url);
+          },
           child: const Text("Інформація"),
         ),
         MenuItemButton(
-          onPressed: () {},
+          onPressed: () async {
+            final url = Uri.https('t.me', '/akkurokawa');
+            await launchUrl(url);
+          },
           child: const Text("Допомога"),
         )
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class signup extends StatefulWidget {
   const signup({super.key});
@@ -11,11 +12,17 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -28,7 +35,7 @@ class _signupState extends State<signup> {
               const EdgeInsets.only(top: 70, left: 24, bottom: 24, right: 24),
           child: Column(
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -37,11 +44,12 @@ class _signupState extends State<signup> {
                   ),
                 ],
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Row(
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: firstNameController,
                       expands: false,
                       decoration: InputDecoration(
                         labelText: "Ім'я",
@@ -62,11 +70,10 @@ class _signupState extends State<signup> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 8,
-                  ),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: TextField(
+                      controller: lastNameController,
                       expands: false,
                       decoration: InputDecoration(
                         labelText: "Прізвище",
@@ -89,7 +96,7 @@ class _signupState extends State<signup> {
                   )
                 ],
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -110,9 +117,15 @@ class _signupState extends State<signup> {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TextField(
+                maxLength: 10,
+                keyboardType: TextInputType.number,
+                controller: phoneNumberController,
                 decoration: InputDecoration(
+                  counterText: '',
+                  prefixText: "+38 ",
+                  prefixStyle: const TextStyle(color: Color(0xffECDFCC)),
                   labelText: "Телефон",
                   labelStyle: const TextStyle(color: Color(0xffECDFCC)),
                   focusedBorder: OutlineInputBorder(
@@ -130,7 +143,7 @@ class _signupState extends State<signup> {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               TextField(
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -158,11 +171,30 @@ class _signupState extends State<signup> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () async {
-                    await AuthService().signUP(
-                      email: emailController.text,
-                      password: passwordController.text,
-                      context: context,
-                    );
+                    if (emailController.text.isNotEmpty &&
+                        passwordController.text.isNotEmpty &&
+                        firstNameController.text.isNotEmpty &&
+                        lastNameController.text.isNotEmpty &&
+                        phoneNumberController.text.isNotEmpty) {
+                      await AuthService().signUP(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context: context,
+                        firstName: firstNameController.text,
+                        lastName: lastNameController.text,
+                        phoneNumber: phoneNumberController.text,
+                      );
+                    } else {
+                      Fluttertoast.showToast(
+                        msg: "Введіть дані у всі поля",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.SNACKBAR,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: const Color(0xff3C3D37),
+                        textColor: const Color(0xffECDFCC),
+                        fontSize: 16.0,
+                      );
+                    }
                   },
                   child: const Text("Створити Акаунт"),
                 ),

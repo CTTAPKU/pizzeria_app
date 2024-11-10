@@ -9,7 +9,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MaterialApp(
-      home: signin(),
+      home: const signin(),
       theme: theme_data.getAppTheme(),
     ),
   );
