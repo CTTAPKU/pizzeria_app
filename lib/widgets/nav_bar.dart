@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pizzeria_aic/screen/profile.dart';
-import '../screen/history.dart';
-import '../screen/home.dart';
+import 'package:pizzeria_aic/screen/main/profile.dart';
+import '../screen/main/history.dart';
+import '../screen/main/home.dart';
 
 class nav_bar extends StatefulWidget {
   const nav_bar({super.key});

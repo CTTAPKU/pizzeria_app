@@ -115,7 +115,7 @@ class _signinState extends State<signin> {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => signup()),
+                      MaterialPageRoute(builder: (context) => const signup()),
                     );
                   },
                   child: const Text("Зареєструватися"),
