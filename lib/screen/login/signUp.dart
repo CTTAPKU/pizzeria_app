@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class signup extends StatefulWidget {
-  const signup({super.key});
+class signUp extends StatefulWidget {
+  const signUp({super.key});
 
   @override
-  State<signup> createState() => _signupState();
+  State<signUp> createState() => _signUpState();
 }
 
-class _signupState extends State<signup> {
+class _signUpState extends State<signUp> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final firstNameController = TextEditingController();

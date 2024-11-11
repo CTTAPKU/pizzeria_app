@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:pizzeria_aic/screen/login/signin.dart';
-
+import 'package:pizzeria_aic/screen/login/signIn.dart';
 import 'package:pizzeria_aic/theme.dart';
 
 void main() async {
@@ -9,8 +8,8 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MaterialApp(
-      home: const signin(),
-      theme: theme_data.getAppTheme(),
+      home: const signIn(),
+      theme: CustomThemeData.getAppTheme(),
     ),
   );
 }

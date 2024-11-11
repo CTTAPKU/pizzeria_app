@@ -15,7 +15,7 @@ const Order({super.key, required this.id});
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context,
-                MaterialPageRoute(builder: (context) => const nav_bar()));
+                MaterialPageRoute(builder: (context) => const NavBar()));
           },
           icon: const Icon(Icons.arrow_back_outlined),
         ),

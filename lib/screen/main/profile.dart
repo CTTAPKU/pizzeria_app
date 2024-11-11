@@ -4,14 +4,14 @@ import '../../widgets/cascading_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pizzeria_aic/Services/user_data.dart';
 
-class profile extends StatefulWidget {
-  const profile({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  State<profile> createState() => _profileState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _profileState extends State<profile> {
+class _ProfileState extends State<Profile> {
   final uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
@@ -20,7 +20,7 @@ class _profileState extends State<profile> {
       appBar: AppBar(
         title: const Text("Профіль"),
         centerTitle: true,
-        actions: const [cascading_menu()],
+        actions: const [CascadingMenu()],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

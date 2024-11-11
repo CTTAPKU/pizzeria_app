@@ -3,16 +3,16 @@ import 'package:pizzeria_aic/screen/main/profile.dart';
 import '../screen/main/history.dart';
 import '../screen/main/home.dart';
 
-class nav_bar extends StatefulWidget {
-  const nav_bar({super.key});
+class NavBar extends StatefulWidget {
+  const NavBar({super.key});
 
   @override
-  State<nav_bar> createState() => _nav_barState();
+  State<NavBar> createState() => _NavBarState();
 }
 
-class _nav_barState extends State<nav_bar> {
+class _NavBarState extends State<NavBar> {
   int currentPageIndex = 0;
-  final screens = const [Home(), history(), profile()];
+  final screens = const [Home(), History(), Profile()];
   NavigationDestinationLabelBehavior labelBehavior =
       NavigationDestinationLabelBehavior.onlyShowSelected;
 

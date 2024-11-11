@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/history_data.dart';
 
-class history_card extends StatelessWidget {
+class HistoryCard extends StatelessWidget {
   final String pizzaName;
   final bool orderStatus;
   final bool cookingStatus;
   final String id;
 
-  const history_card({super.key, required this.pizzaName, required this.orderStatus, required this.cookingStatus, required this.id});
+  const HistoryCard({super.key, required this.pizzaName, required this.orderStatus, required this.cookingStatus, required this.id});
 
   Text Status() {
     if(orderStatus == true && cookingStatus == false) {

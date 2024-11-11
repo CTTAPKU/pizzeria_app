@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
-class cascading_menu extends StatelessWidget {
-  const cascading_menu({super.key});
+class CascadingMenu extends StatelessWidget {
+  const CascadingMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

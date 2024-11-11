@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
-import 'package:pizzeria_aic/screen/login/signup.dart';
+import 'package:pizzeria_aic/screen/login/signUp.dart';
 
-class signin extends StatefulWidget {
-  const signin({super.key});
+class signIn extends StatefulWidget {
+  const signIn({super.key});
 
   @override
-  State<signin> createState() => _signinState();
+  State<signIn> createState() => _signInState();
 }
 
-class _signinState extends State<signin> {
+class _signInState extends State<signIn> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -115,7 +115,7 @@ class _signinState extends State<signin> {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const signup()),
+                      MaterialPageRoute(builder: (context) => const signUp()),
                     );
                   },
                   child: const Text("Зареєструватися"),

@@ -14,11 +14,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.grey,
       appBar: AppBar(
         title: const Text("Меню"),
         centerTitle: true,
-        actions: const [cascading_menu()],
+        actions: const [CascadingMenu()],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -30,7 +29,7 @@ class _HomeState extends State<Home> {
               return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return pizza_card(pizzaName: data[index]["pizzaName"], pictureURL: data[index]["pictureURL"], id: data[index]["id"]);
+                  return PizzaCard(pizzaName: data[index]["pizzaName"], pictureURL: data[index]["pictureURL"], id: data[index]["id"]);
                 },
               );
             } else {

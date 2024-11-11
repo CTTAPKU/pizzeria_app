@@ -4,14 +4,14 @@ import 'package:pizzeria_aic/Services/history_data.dart';
 import 'package:pizzeria_aic/widgets/cascading_menu.dart';
 import 'package:pizzeria_aic/widgets/historycard.dart';
 
-class history extends StatefulWidget {
-  const history({super.key});
+class History extends StatefulWidget {
+  const History({super.key});
 
   @override
-  State<history> createState() => _historyState();
+  State<History> createState() => _HistoryState();
 }
 
-class _historyState extends State<history> {
+class _HistoryState extends State<History> {
   final uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
@@ -20,7 +20,7 @@ class _historyState extends State<history> {
       appBar: AppBar(
         title: const Text("Історія"),
         centerTitle: true,
-        actions: const [cascading_menu()],
+        actions: const [CascadingMenu()],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -32,7 +32,7 @@ class _historyState extends State<history> {
               return ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
-                  return history_card(
+                  return HistoryCard(
                     pizzaName: data[index]["pizzaName"],
                     orderStatus: data[index]["orderStatus"],
                     cookingStatus: data[index]["cookingStatus"],

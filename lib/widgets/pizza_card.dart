@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:expansion_widget/expansion_widget.dart';
 import 'package:pizzeria_aic/screen/secondary/order.dart';
 
-class pizza_card extends StatelessWidget {
+class PizzaCard extends StatelessWidget {
   final String pizzaName;
   final String pictureURL;
   final String id;
 
-  const pizza_card({super.key, required this.pizzaName, required this.pictureURL, required this.id});
+  const PizzaCard({super.key, required this.pizzaName, required this.pictureURL, required this.id});
 
   @override
   Widget build(BuildContext context) {

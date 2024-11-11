@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:pizzeria_aic/screen/login/signin.dart';
+import 'package:pizzeria_aic/screen/login/signIn.dart';
 import 'package:pizzeria_aic/widgets/nav_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -20,7 +20,7 @@ class AuthService {
       await Future.delayed(const Duration(seconds: 1));
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const signin()),
+        MaterialPageRoute(builder: (context) => const signIn()),
       );
 
       CollectionReference users = FirebaseFirestore.instance.collection("Users");
@@ -55,7 +55,7 @@ class AuthService {
           .signInWithEmailAndPassword(email: email, password: password);
 
       await Future.delayed(const Duration(seconds: 1));
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)  => const nav_bar()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)  => const NavBar()));
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
         msg: "Неправильні облікові дані",
