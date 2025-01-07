@@ -1,0 +1,8 @@
+# flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icon/mono_icon.png"
+  #  min_sdk_android: 21 # android min sdk min:16, default 21
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icon/mono_icon.png"
+  adaptive_icon_monochrome: "assets/icon/mono_icon.png"
