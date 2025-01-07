@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MenuData {
-  Future<void> setPizza(String pizzaName, String pizzaSize, String pizzaPrice, String pizzaDiscription, String pictureURL) async {
+  Future<void> setPizza(String pizzaName, String pizzaSize, String pizzaPrice, String pizzaDescription, String pizzaComposition, String pictureURL) async {
     DocumentReference newCityRef = FirebaseFirestore.instance.collection("Pizzas").doc();
     newCityRef.set({
       'pizzaName': pizzaName,
       'pizzaSize': pizzaSize,
       "pizzaPrice": pizzaPrice,
-      "pizzaDiscription": pizzaDiscription,
+      "pizzaDescription": pizzaDescription,
+      "pizzaComposition": pizzaComposition,
       "pictureURL": pictureURL,
       "id": newCityRef.id
     });

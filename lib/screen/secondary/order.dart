@@ -5,8 +5,9 @@ import 'package:pizzeria_aic/widgets/nav_bar.dart';
 
 class Order extends StatelessWidget {
   final String id;
+  final String pizzaName;
 
-const Order({super.key, required this.id});
+const Order({super.key, required this.id, required this.pizzaName});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ const Order({super.key, required this.id});
           },
           icon: const Icon(Icons.arrow_back_outlined),
         ),
-        title: const Text("Замовлення"),
+        title: Text(pizzaName),
       ),
       body: FutureBuilder(
         future: MenuData().getPizzaData(id),
@@ -34,25 +35,30 @@ const Order({super.key, required this.id});
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.network(data["pictureURL"]),
+                      SizedBox(height: 200, width: MediaQuery.of(context).size.width,child: Image.network(data["pictureURL"], fit: BoxFit.cover,)),
                       const SizedBox(height: 15),
-                      Text(
-                        data["pizzaName"],
-                        style: const TextStyle(fontSize: 25),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          data["pizzaDescription"],
+                          style: const TextStyle(fontSize: 15),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text("Склад: ${data["pizzaComposition"]}",
+                          style: const TextStyle(fontSize: 15),
+                          textAlign: TextAlign.justify,
+                        ),
                       ),
                       const SizedBox(height: 15),
                       Text(
                         "Ціна ${data['pizzaPrice']}",
                         style: const TextStyle(fontSize: 20),
                       ),
-                      const SizedBox(height: 15),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          data["pizzaDiscription"],
-                          style: const TextStyle(fontSize: 15),
-                        ),
-                      ),
+
                     ],
                   ),
                   ElevatedButton(
