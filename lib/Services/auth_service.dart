@@ -7,6 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
 
+  final FirebaseAuth authInstance = FirebaseAuth.instance;
+  final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
+
   Future<void> signUP(
       {required String email,
       required String password,
@@ -14,8 +17,7 @@ class AuthService {
       required String firstName, required String lastName, required String phoneNumber,
       }) async {
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      await authInstance.createUserWithEmailAndPassword(email: email, password: password);
 
       await Future.delayed(const Duration(seconds: 1));
       Navigator.pushReplacement(
@@ -23,9 +25,8 @@ class AuthService {
         MaterialPageRoute(builder: (context) => const signIn()),
       );
 
-      CollectionReference users = FirebaseFirestore.instance.collection("Users");
-      FirebaseAuth auth = FirebaseAuth.instance;
-      final uid = auth.currentUser!.uid;
+      CollectionReference users = firestoreInstance.collection("Users");
+      final uid = authInstance.currentUser!.uid;
       users.add({'firstName': firstName, "lastName": lastName, "email": email, "phoneNumber": phoneNumber, "uid": uid});
 
 
@@ -51,8 +52,7 @@ class AuthService {
       required String password,
       required BuildContext context}) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      await authInstance.signInWithEmailAndPassword(email: email, password: password);
 
       await Future.delayed(const Duration(seconds: 1));
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)  => const NavBar()));
