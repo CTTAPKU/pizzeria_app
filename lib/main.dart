@@ -8,7 +8,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(
     MaterialApp(
-      home: const signIn(),
+      home: const SignIn(),
       theme: CustomThemeData.getAppTheme(),
     ),
   );
