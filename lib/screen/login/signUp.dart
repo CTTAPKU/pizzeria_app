@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class signUp extends StatefulWidget {
-  const signUp({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<signUp> createState() => _signUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _signUpState extends State<signUp> {
+class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final firstNameController = TextEditingController();
@@ -184,6 +184,11 @@ class _signUpState extends State<signUp> {
                         lastName: lastNameController.text,
                         phoneNumber: phoneNumberController.text,
                       );
+                      await Future.delayed(const Duration(seconds: 1));
+                      AuthService().signIN(
+                          email: emailController.text,
+                          password: passwordController.text,
+                          context: context);
                     } else {
                       Fluttertoast.showToast(
                         msg: "Введіть дані у всі поля",
