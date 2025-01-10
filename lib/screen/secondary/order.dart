@@ -17,6 +17,17 @@ class Order extends StatefulWidget {
 
 class _OrderState extends State<Order> {
   List<bool> checked = [];
+  double price = 0;
+
+  void getPrice() async {
+    price = double.parse((await MenuData().getPizzaData(widget.id))["pizzaPrice"] as String);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPrice();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +91,14 @@ class _OrderState extends State<Order> {
                               return ListTile(
                                 onTap: () {
                                   toogleFunction(animated: true);
-                                  setState(() {
-                                    checked = List<bool>.filled(data["extraIngredients"].length, false);
-                                  });
-                                  },
+                                  setState(
+                                    () {
+                                      checked = List<bool>.filled(
+                                          data["extraIngredients"].length,
+                                          false);
+                                    },
+                                  );
+                                },
                                 leading: const Text(
                                   "Додаткові інградієнти",
                                   style: TextStyle(fontSize: 16),
@@ -101,41 +116,36 @@ class _OrderState extends State<Order> {
                               shrinkWrap: true,
                               itemCount: data["extraIngredients"].length,
                               itemBuilder: (context, index) {
-                                return Row(
-                                  children: [
-                                    Checkbox(
-                                      value: checked[index],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          checked[index] = value ?? false;
-                                        });
+                                return CheckboxListTile(
+                                  value: checked[index],
+                                  title: Text(data["extraIngredients"][index]),
+                                  onChanged: (bool? value) {
+                                    setState(
+                                      () {
+                                        checked[index] = value ?? false;
+                                        if (checked[index]) {
+                                          price = (price * 1.05).roundToDouble();
+                                        } else {
+                                          price = (price / 1.05).roundToDouble();
+                                        }
                                       },
-                                      checkColor: const Color(0xffECDFCC),
-                                      fillColor: WidgetStateProperty
-                                          .resolveWith<Color>(
-                                        (Set<WidgetState> states) {
-                                          if (states
-                                              .contains(WidgetState.disabled)) {
-                                            return Colors.transparent;
-                                          }
-                                          if (states
-                                              .contains(WidgetState.selected)) {
-                                            return const Color(0xff697565);
-                                          }
-                                          return Colors.transparent;
-                                        },
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            checked[index] = !checked[index];
-                                          });
-                                        },
-                                        child: Text(
-                                            data["extraIngredients"][index])),
-                                  ],
+                                    );
+                                  },
+                                  checkColor: const Color(0xffECDFCC),
+                                  fillColor:
+                                      WidgetStateProperty.resolveWith<Color>(
+                                    (Set<WidgetState> states) {
+                                      if (states
+                                          .contains(WidgetState.disabled)) {
+                                        return Colors.transparent;
+                                      }
+                                      if (states
+                                          .contains(WidgetState.selected)) {
+                                        return const Color(0xff697565);
+                                      }
+                                      return Colors.transparent;
+                                    },
+                                  ),
                                 );
                               },
                             ),
@@ -151,13 +161,13 @@ class _OrderState extends State<Order> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Ціна: ${data['pizzaPrice']}",
+                          "Ціна: $price",
                           style: const TextStyle(fontSize: 18),
                         ),
                         ElevatedButton(
                           onPressed: () {
                             HistoryData().setHistory(data["pizzaName"],
-                                widget.id, data['pizzaPrice']);
+                                widget.id, price.toString());
                             Navigator.pop(context);
                           },
                           child: const Text(
