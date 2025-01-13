@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/auth_service.dart';
-import 'package:pizzeria_aic/screen/login/signUp.dart';
+import 'package:pizzeria_aic/screen/login/sign_up.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});

@@ -36,7 +36,7 @@ class AuthService {
         textColor: const Color(0xffECDFCC),
         fontSize: 16.0,
       );
-    } catch (e) {}
+    }
   }
 
 
@@ -47,7 +47,7 @@ class AuthService {
     try {
       await authInstance.signInWithEmailAndPassword(email: email, password: password);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)  => const NavBar()), (Route<dynamic> route) => false);
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       Fluttertoast.showToast(
         msg: "Неправильні облікові дані",
         toastLength: Toast.LENGTH_LONG,
@@ -57,6 +57,6 @@ class AuthService {
         textColor: const Color(0xffECDFCC),
         fontSize: 16.0,
       );
-    } catch (e) {}
+    }
   }
 }

@@ -9,7 +9,7 @@ class HistoryCard extends StatelessWidget {
 
   const HistoryCard({super.key, required this.pizzaName, required this.orderStatus, required this.cookingStatus, required this.id});
 
-  Text Status() {
+  Text status() {
     if(orderStatus == true && cookingStatus == false) {
       return const Text("Статус: Готується");
     } else if(orderStatus == true && cookingStatus == true) {
@@ -27,7 +27,7 @@ class HistoryCard extends StatelessWidget {
         child: ListTile(
           leading: const Icon(Icons.local_pizza),
           title: Text(pizzaName),
-          subtitle: Status(),
+          subtitle: status(),
           trailing: IconButton(onPressed: (){HistoryData().deleteHistory(id);}, icon: const Icon(Icons.delete)),
         ),
       ),
