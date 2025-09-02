@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzeria_aic/Services/history_data.dart';
+import 'package:pizzeria_aic/constants/app_colors.dart';
 
 class HistoryCard extends StatelessWidget {
   final String pizzaName;
@@ -22,7 +23,7 @@ class HistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xff697565),
+      color: AppColors.darkSecondaryBackground,
       child: InkWell(
         child: ListTile(
           leading: const Icon(Icons.local_pizza),

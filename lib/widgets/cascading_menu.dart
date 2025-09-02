@@ -8,13 +8,10 @@ class CascadingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MenuAnchor(
-      style: const MenuStyle(
-        backgroundColor: WidgetStatePropertyAll<Color>(Color(0xff697565)),
-      ),
       menuChildren: [
         MenuItemButton(
           onPressed: () async {
-            final url = Uri.https('github.com', '/CTTAPKU/pizzeria_aic');
+            final url = Uri.https('github.com', '/CTTAPKU/pizzeria_app');
             await launchUrl(url);
           },
           child: const Text("Інформація"),
