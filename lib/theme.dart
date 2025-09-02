@@ -1,47 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pizzeria_aic/constants/app_colors.dart';
 
 class CustomThemeData {
   static ThemeData getAppTheme() {
     return ThemeData(
 
       appBarTheme: AppBarTheme(
-        iconTheme: const IconThemeData(color: Color(0xffECDFCC)),
-        color: const Color(0xff3C3D37),
+        iconTheme: const IconThemeData(color: AppColors.darkPrimary),
+        color: AppColors.darkSecondaryBackground,
         titleTextStyle: GoogleFonts.montserratAlternates(
           fontSize: 25,
-          color: const Color(0xffECDFCC),
+          color:  AppColors.darkPrimary,
           fontWeight: FontWeight.w500,
         ),
       ),
 
       textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: Color(0xffECDFCC)),
-        bodyMedium: TextStyle(color: Color(0xffECDFCC)),
-        bodySmall: TextStyle(color: Color(0xffECDFCC)),
-
-        labelSmall: TextStyle(color: Color(0xffECDFCC)),
-        labelLarge: TextStyle(color: Color(0xffECDFCC)),
-        labelMedium: TextStyle(color: Color(0xffECDFCC)),
+        bodyLarge: TextStyle(color: AppColors.text),
+        bodyMedium: TextStyle(color: AppColors.text),
+        bodySmall: TextStyle(color: AppColors.text),
+        labelSmall: TextStyle(color: AppColors.text),
+        labelLarge: TextStyle(color: AppColors.text),
+        labelMedium: TextStyle(color: AppColors.text),
       ),
 
       fontFamily: GoogleFonts.nunito(
         fontWeight: FontWeight.w700,
       ).fontFamily,
 
-      scaffoldBackgroundColor: const Color(0xff1E201E),
+      scaffoldBackgroundColor: AppColors.darkPrimaryBackground,
 
       navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: const Color(0xff3C3D37),
-          iconTheme: const WidgetStatePropertyAll<IconThemeData>(
-              IconThemeData(color: Color(0xffECDFCC))),
+          backgroundColor: AppColors.darkSecondaryBackground,
+          iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
+            if (states.contains(WidgetState.selected)) {
+              return const IconThemeData(color: AppColors.darkPrimaryBackground);
+            }
+            return const IconThemeData(color: AppColors.darkPrimary);
+          }),
           labelTextStyle: WidgetStateProperty.all(
             GoogleFonts.montserratAlternates(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
-                color: const Color(0xffECDFCC)),
+                color: AppColors.text),
           ),
-          indicatorColor: const Color(0xff697565)),
+          indicatorColor: AppColors.darkAccent),
 
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
@@ -51,7 +55,7 @@ class CustomThemeData {
               fontWeight: FontWeight.w600,
             ),
           ),
-          foregroundColor: const WidgetStatePropertyAll<Color>(Color(0xffECDFCC)),
+          foregroundColor: const WidgetStatePropertyAll<Color>(AppColors.darkPrimary),
         ),
       ),
 
@@ -63,14 +67,14 @@ class CustomThemeData {
               fontWeight: FontWeight.w600,
             ),
           ),
-          foregroundColor: const WidgetStatePropertyAll<Color>(Color(0xffECDFCC)),
-          backgroundColor: const WidgetStatePropertyAll<Color>(Color(0xff3C3D37))
+          foregroundColor: const WidgetStatePropertyAll<Color>(AppColors.darkPrimaryBackground),
+          backgroundColor: const WidgetStatePropertyAll<Color>(AppColors.darkPrimary)
         ),
       ),
 
       listTileTheme: const ListTileThemeData(
-        iconColor: Color(0xffECDFCC),
-        textColor: Color(0xffECDFCC),
+        iconColor: AppColors.darkPrimary,
+        textColor: AppColors.text,
       ),
 
     );
