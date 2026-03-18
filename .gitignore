@@ -48,3 +48,11 @@ app.*.map.json
 
 # Coverage
 coverage/
+
+# Local configuration files (secrets)
+google-services.json
+GoogleService-Info.plist
+
+# Native build intermediates
+**/.cxx/
+**/AppFrameworkInfo.plist
