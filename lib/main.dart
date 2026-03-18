@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:pizzeria_aic/screen/login/sign_in.dart';
-import 'package:pizzeria_aic/theme.dart';
-import 'package:pizzeria_aic/widgets/nav_bar.dart';
+import 'package:pizzeria_aic/features/auth/presentation/sign_in.dart';
+import 'package:pizzeria_aic/core/theme/theme.dart';
+import 'package:pizzeria_aic/core/widgets/nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
